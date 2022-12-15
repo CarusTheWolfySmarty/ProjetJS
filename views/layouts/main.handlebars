@@ -37,9 +37,17 @@
 <body>
 
 
+
     <!--Accès à la partie de code sur le header.handlebars dans le dossier partial à partir de ce fichier main.handlebars-->
     {{>header}}
 
+    <!-- Message d'avertissement du cookie-->
+    {{#unless accept}}
+    <div id="message_cookie">
+        En navigant sur ce site web , vous acceptez les cookies
+        <input type="button" value="Accepter" id="btn_cookie">
+    </div>
+    {{/unless}}
 
     <!--C`est la balise main qui va contenir le contenu principal de tous nos pages-->
     <main>
