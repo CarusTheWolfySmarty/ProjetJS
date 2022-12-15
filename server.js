@@ -123,7 +123,9 @@ app.get('/Inscription', async (request, response) => {
         styles: ['/css/Inscription.css'],
         scripts: ['/js/InscriptionCompte.js'],
         //ici je vais dire que mon utilisateur existe et je vais initialiser la variable utilisateur
-        user: request.user
+        user: request.user,
+        //cette variable va permettre de accepter les conditions de cookies afin de supprimer ce message par la suite
+        accept: request.session.accept
     })
 })
 
@@ -140,6 +142,7 @@ app.get('/PactiviteInscrites', async (request, response) => {
             //la on vas dire si l`utilisateur est admin et que id_type_utilisateur = 2, si il l`est alors on va caché toutes les textbox ou autre acces à l`utilisateur normale
             EstAdmin: request.user?.id_type_utilisateur > 1,
             manegesinscrits: await getManegeInscrits(request.user?.id_utilisateur),
+            //cette variable va permettre de accepter les conditions de cookies afin de supprimer ce message par la suite
             accept: request.session.accept
         })
         console.log(request.user?.id_utilisateur);
@@ -171,6 +174,7 @@ app.get('/Padmin', async (request, response) => {
             //la on vas dire si l`utilisateur est admin et que id_type_utilisateur = 2, si il l`est alors on va caché toutes les textbox ou autre acces à l`utilisateur normale
             EstAdmin: request.user?.id_type_utilisateur > 1,
             maneges: getManege,
+            //cette variable va permettre de accepter les conditions de cookies afin de supprimer ce message par la suite
             accept: request.session.accept
         })
         //sinon faire l`erreur 403 qui va dire à l`utilisateur qu`il n`est pas autorisé
@@ -184,7 +188,9 @@ app.get('/Connexion', async (request, response) => {
         styles: ['/css/Connexion.css'],
         scripts: ['/js/ConnexionCompte.js'],
         //ici je vais dire que mon utilisateur existe et je vais initialiser la variable utilisateur
-        user: request.user
+        user: request.user,
+        //cette variable va permettre de accepter les conditions de cookies afin de supprimer ce message par la suite
+        accept: request.session.accept
     })
 })
 
